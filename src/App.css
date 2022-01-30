@@ -1,0 +1,34 @@
+body{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+.styleDiv{
+    display: flex;
+    flex-wrap: wrap;
+}
+.user{
+    width: 380px;
+    height: 1000px;
+    font-size: 25px;
+    margin: 10px;
+    line-height: 37px;
+}
+.post{
+    width: 1600px;
+    height: 1000px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 10px;
+    border-left: black 1px solid;
+}
+.p{
+    margin-right: 10px;
+}
+.comments{
+    width: 100%;
+    height: 8000px;
+    padding: 20px;
+    border-top: 1px solid black;
+}
