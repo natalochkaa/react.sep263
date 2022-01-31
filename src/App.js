@@ -1,5 +1,4 @@
 import './App.css';
-
 import Users from "./Components/Users";
 import UserDetails from "./Components/UserDetails";
 import Posts from "./Components/Posts";
@@ -12,7 +11,6 @@ const App = () => {
 
     let getUser = (user) => {
         setUser(user)
-        setPosts([])
     };
     let getDetails = (id) => {
         PostServices.getByUserID(id).then(value => setPosts([...value]))
@@ -23,7 +21,7 @@ const App = () => {
                 <Users getUser={getUser}/>
                 {user && <UserDetails user={user} getDetails={getDetails}/>}
             </div>
-            {!!posts.length && <Posts posts={posts}/>}
+            {posts && <Posts posts={posts}/>}
         </div>
     );
 };
