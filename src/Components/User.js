@@ -1,12 +1,8 @@
-const User = ({user, getUser}) => {
-    let {id, name} = user
+const User = ({user}) => {
+    let {name,username,email} = user
+
     return (
-
-        <div className={`styleDivUser`}> {id}. {name}
-            <br/>
-            <button onClick={() => getUser(user)} className={`buttonUser`}> Click me</button>
-        </div>
-
+        <div className={`styleDivUser`}> {name}. {username} - {email}</div>
     );
 };
 

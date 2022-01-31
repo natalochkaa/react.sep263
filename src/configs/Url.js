@@ -4,5 +4,4 @@ export default baseUrl
 
 export let urls ={
     users: `/users`,
-    posts: `/posts`
 }

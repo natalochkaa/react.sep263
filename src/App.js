@@ -1,29 +1,29 @@
-import './App.css';
-
+import React, {useEffect, useState} from 'react';
+import Form from "./Components/Form";
 import Users from "./Components/Users";
-import UserDetails from "./Components/UserDetails";
-import Posts from "./Components/Posts";
-import {useState} from "react";
-import {PostServices} from "./Services/PostServices";
+import {UserService} from "./Services/UserServices";
 
 const App = () => {
-    let [user, setUser] = useState(null);
-    let [posts, setPosts] = useState(null);
+    let [user, setUser] = useState([])
+    let [filterUser, setFilterUser] = useState([])
+    useEffect(() => {
+        UserService.getAll().then(value => {
+            setUser([...value])
+            setFilterUser([...value])
+        })
+    }, [])
 
-    let getUser = (user) => {
-        setUser(user)
-        setPosts([])
-    };
-    let getDetails = (id) => {
-        PostServices.getByUserID(id).then(value => setPosts([...value]))
-    };
+    let filterForm = (data) => {
+        let filter = [...user]
+        if(data.name){filter = filter.filter(user=>user.name.includes(data.name))}
+        if(data.username){filter = filter.filter(user=>user.username.includes(data.username))}
+        if(data.email){filter = filter.filter(user=>user.email.includes(data.email))}
+        setFilterUser(filter)
+    }
     return (
         <div>
-            <div className={`www`}>
-                <Users getUser={getUser}/>
-                {user && <UserDetails user={user} getDetails={getDetails}/>}
-            </div>
-            {!!posts.length && <Posts posts={posts}/>}
+            <Form filterForm={filterForm}/>
+            <Users filterUser={filterUser}/>
         </div>
     );
 };
