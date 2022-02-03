@@ -1,11 +1,11 @@
 
 import User from "./User";
 
-const Users = ({users}) => {
+const Users = ({filterUser}) => {
 
     return (
         <div>
-            {users.map(user => <User key={user.id} user={user}/>)}
+            {filterUser.map(user => <User key={user.id} user={user}/>)}
         </div>
     );
 };
